@@ -45,5 +45,9 @@ public class TestClient extends Application{
 		catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		new Thread(() -> {
+			//TODO: run use input side in here
+		}).start();
 	}
 }
