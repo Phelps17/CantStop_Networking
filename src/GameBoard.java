@@ -49,7 +49,8 @@ public class GameBoard {
 		playerTurn = 0;
 
 		//check to make sure the gameboard is set up properly
-		System.out.println(this.toString());
+		//comented out to not overload the server output
+		//System.out.println(this.toString());
 
 	}
 
