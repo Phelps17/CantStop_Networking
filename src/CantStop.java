@@ -10,8 +10,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public class CantStop {
+public class CantStop implements Serializable {
 
 	//data fields 
 	private GameBoard cantStopBoard; //gameboard to play on

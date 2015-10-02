@@ -151,8 +151,7 @@ public class GameBoard {
 	 * Initializes information required to start a new player's turn.
 	 */
 	public void startNewTurn() {
-		//Didn't need this method in my program
-		//Piazza said it was okay
+		//ALert player that they can roll
 	}
 
 	/**
