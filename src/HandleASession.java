@@ -21,6 +21,8 @@ class HandleASession implements Runnable, GameServerUtil {
 
 	public void run() {
 		try {
+			int playerTurn = 1;
+			
 			DataInputStream fromPlayer1 = new DataInputStream(
 					player1.getInputStream());
 			ObjectOutputStream toPlayer1 = new ObjectOutputStream(
@@ -34,6 +36,21 @@ class HandleASession implements Runnable, GameServerUtil {
 			Color[] colors = {Color.RED, Color.BLUE};
 			System.out.println("Starting a new game");
 			CantStop game = new CantStop(players, colors);
+			
+			//TODO: Send this data
+			for (Track track : game.getGameBoard().getTracks()) {
+				for (int i = 0; i < track.getLength(); i++) {
+					System.out.print(track.getIdAt(i) + ",");
+				}
+				System.out.println();
+			}
+			
+			//send players turn
+			toPlayer1.writeInt(playerTurn);
+			toPlayer2.writeInt(playerTurn);
+			
+			//TODO:start the game
+			
 		}
 		catch (IOException e) {
 			e.printStackTrace();

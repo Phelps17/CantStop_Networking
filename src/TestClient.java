@@ -28,6 +28,10 @@ public class TestClient extends Application{
 			
 			int playerNo = fromServer.readInt();
 			System.out.println("You are player " + playerNo);
+			
+			int playerTurn = fromServer.readInt();
+			
+			System.out.println("It is player " + playerTurn + "'s turn.");
 		}
 		catch (Exception ex) {
 			System.out.println("Error. Couldn't connect you to the game server.");
@@ -35,14 +39,15 @@ public class TestClient extends Application{
 		}
 		
 		new Thread(() -> {
-			//TODO: this is where the game should run
+			
+			/*TODO: this is where the game should run
 			String[] names = {"Player 1", "Player 2"};
 			Color[] colors = {Color.RED, Color.BLUE};
 			
 			//client currently runs it's own game rather than through the server
 			Gui gui = new Gui(new CantStop(names, colors));
 			gui.update();
-			gui.start();
+			gui.start();*/
 			
 		}).start();
 	}
