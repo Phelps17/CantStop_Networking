@@ -32,7 +32,7 @@ public class GameServer extends Application implements GameServerUtil{
 					});
 
 					//notify player that they are player 1
-					new DataOutputStream(player1.getOutputStream()).writeInt(PLAYER1);
+					new ObjectOutputStream(player1.getOutputStream()).writeInt(PLAYER1);
 
 					Socket player2 = serverSocket.accept();
 
@@ -43,7 +43,7 @@ public class GameServer extends Application implements GameServerUtil{
 
 
 					//notify player that they are player 2
-					new DataOutputStream(player2.getOutputStream()).writeInt(PLAYER2);
+					new ObjectOutputStream(player2.getOutputStream()).writeInt(PLAYER2);
 
 					Platform.runLater(() -> {
 						System.out.println(new Date() + ": Start a thread for session " + sessionNo++);

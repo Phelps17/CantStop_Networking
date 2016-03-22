@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.io.*;
 import java.net.*;
 import javafx.application.Application;
@@ -8,8 +7,8 @@ public class TestClient extends Application{
 
 	private String host = "localhost";
 	
-	DataOutputStream toServer = null;
-	DataInputStream fromServer = null;
+	ObjectOutputStream toServer = null;
+	ObjectInputStream fromServer = null;
 
 	public void start(Stage primaryStage) {
 		connectToServer();
@@ -23,9 +22,18 @@ public class TestClient extends Application{
 		try {
 			Socket socket = new Socket(host, 8000);
 			
-			fromServer = new DataInputStream(socket.getInputStream());
-			toServer = new DataOutputStream(socket.getOutputStream());
+			fromServer = new ObjectInputStream(socket.getInputStream());
+			toServer = new ObjectOutputStream(socket.getOutputStream());
 			
+		}
+		catch (Exception ex) {
+			System.out.println("Error. Couldn't connect you to the game server.");
+			ex.printStackTrace();
+			System.exit(0);
+		}
+		
+		try {
+
 			int playerNo = fromServer.readInt();
 			System.out.println("You are player " + playerNo);
 			
@@ -34,20 +42,22 @@ public class TestClient extends Application{
 			System.out.println("It is player " + playerTurn + "'s turn.");
 		}
 		catch (Exception ex) {
-			System.out.println("Error. Couldn't connect you to the game server.");
-			System.exit(0);
+			ex.printStackTrace();
 		}
+		
+		System.out.println("Here");
 		
 		new Thread(() -> {
 			
 			/*TODO: this is where the game should run
-			String[] names = {"Player 1", "Player 2"};
-			Color[] colors = {Color.RED, Color.BLUE};
+			try {
+				GameBoard gameboard = (GameBoard) fromServer.readObject();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
 			
-			//client currently runs it's own game rather than through the server
-			Gui gui = new Gui(new CantStop(names, colors));
-			gui.update();
-			gui.start();*/
+			
 			
 		}).start();
 	}

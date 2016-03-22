@@ -7,14 +7,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 import java.awt.Color;
+import java.io.*;
 
-/**
- * The GameBoard handles the flow of the game, as well as maintaining the set
- * of tracks and players which make up the state of the game.
- * 
- * @author albrooks
- */
-public class GameBoard {
+public class GameBoard implements Serializable {
 	//data fields
 	private Player[] gamePlayers; //array of game players
 	private Track[] gameboardTracks = new Track[11]; //array of tracks
